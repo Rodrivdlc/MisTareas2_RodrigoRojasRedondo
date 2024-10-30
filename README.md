@@ -1,7 +1,15 @@
 # MisTareas2_RodrigoRojasRedondo
-## Esta es la tercera aplicación de tres que incluye el ejercicio Prueba de Programación Android 1:
+
 MisTareas2:
 https://github.com/Rodrivdlc/MisTareas2_RodrigoRojasRedondo.git
+
+## Esta es la tercera aplicación de tres que incluye el ejercicio Prueba de Programación Android 1:
+
+otros ejercicios:
+
+MisTareas1: https://github.com/Rodrivdlc/MisTareas1_RodrigoRojasRedondo.git
+
+ListaCompra: https://github.com/Rodrivdlc/ListaCompra_RodrigoRojasRedondo.git
 
 ## Descripción
 
