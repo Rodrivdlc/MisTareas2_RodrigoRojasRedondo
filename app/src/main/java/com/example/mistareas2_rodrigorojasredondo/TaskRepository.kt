@@ -6,6 +6,19 @@ import android.content.Context
 class TaskRepository(context: Context) {
     private val dbHelper = TaskDatabaseHelper(context)
 
+    fun markTaskAsCompleted(taskId: Long) {
+        val db = dbHelper.writableDatabase
+        val values = ContentValues().apply {
+            put(TaskDatabaseHelper.COLUMN_COMPLETED, 1) // Marcar como hecha
+        }
+        db.update(
+            TaskDatabaseHelper.TABLE_NAME,
+            values,
+            "${TaskDatabaseHelper.COLUMN_ID} = ?",
+            arrayOf(taskId.toString())
+        )
+    }
+
     fun addTask(task: Task) {
         val db = dbHelper.writableDatabase
         val values = ContentValues().apply {

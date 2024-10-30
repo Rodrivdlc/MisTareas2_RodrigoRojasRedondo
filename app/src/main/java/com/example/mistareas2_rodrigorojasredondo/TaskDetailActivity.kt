@@ -22,14 +22,21 @@ class TaskDetailActivity : ComponentActivity() {
         setContent {
             val task = repository.getTasks().find { it.id == taskId }
             task?.let {
-                TaskDetailScreen(task = it, onBack = { finish() }) // Llama a finish() para cerrar la actividad
+                TaskDetailScreen(
+                    task = it,
+                    onBack = { finish() },
+                    onMarkAsCompleted = {
+                        repository.markTaskAsCompleted(taskId)
+                        finish() // Cierra la actividad después de marcar como hecha
+                    }
+                )
             }
         }
     }
 }
 
 @Composable
-fun TaskDetailScreen(task: Task, onBack: () -> Unit) {
+fun TaskDetailScreen(task: Task, onBack: () -> Unit, onMarkAsCompleted: () -> Unit) {
     Column(modifier = Modifier.padding(16.dp)) {
         Text(text = task.name, style = MaterialTheme.typography.headlineMedium)
         Text(text = "Descripción: ${task.description}")
@@ -39,10 +46,17 @@ fun TaskDetailScreen(task: Task, onBack: () -> Unit) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Button(onClick = onBack) { // Llama a la función onBack cuando se presiona
-            Text("Volver")
+        Row {
+            Button(onClick = onBack) {
+                Text("Volver")
+            }
+            Spacer(modifier = Modifier.width(8.dp))
+            Button(onClick = onMarkAsCompleted) {
+                Text("Marcar como Hecha")
+            }
         }
     }
 }
+
 
 
